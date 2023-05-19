@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Spotify - Web Player: Music for everyone</title>
+    <link rel="stylesheet" href="{% static 'style/music.css' %}">
+    <link rel="stylesheet" href="{% static 'style/profile.css' %}">
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <div class="header__wrapper">
+            <ul class="header__nav">
+         x`1       <li>
+                    <a href="" class="row">
+                        <img src="{% static 'img/icon/left.svg' %}" alt=""/>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="row"
+                    ><img src="{% static 'img/icon/right.svg' %}" alt=""
+                    /></a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</header>
+<section class="leftBar">
+    <div class="leftBar__wrapper">
+        <a href="{% url 'home' %}">
+            <img src="{% static 'img/icon/logo.svg' %}" alt=""/>
+        </a>
+        <div class="leftBar__center">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'img/icon/home.svg' %}" alt=""/>
+                Главная
+            </a>
+            <a href="{% url 'search' %}">
+                <img src="{% static 'img/icon/search.svg' %}" alt=""/>
+                Поиск</a
+            >
+            <a href="{% url 'playlist' %}">
+                <img src="{% static 'img/icon/playlist.svg' %}" alt=""/>
+                Моя медиатека</a
+            >
+        </div>
+
+        <div class="leftBar__bottom">
+            <a href="{% url 'createPlaylist' %}">
+                <img src="{% static 'img/icon/plus.svg' %}" alt=""/>
+                Создать плейлист</a>
+            <a href="{% url 'favourite' %}">
+                <img src="{% static 'img/icon/favourite.svg' %}" alt=""/>
+                Любимые треки</a>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container">
+        <div class="content__wrapper">
+            <div class="content__top">
+                <div class="content__top__left">
+                    <img src="{% static 'img/skin.png' %}" alt=""/>
+                </div>
+                <div class="content__top__right">
+                    <h4>Плейлист</h4>
+                    <h1 class="content__top__title">{{title}}</h1>
+                    <p class="content__top_timer">примерно 5ч.</p>
+                </div>
+            </div>
+            <ul class="btn__list">
+                <li class="btn__item">
+                    <a href="">
+                        <img src="{% static 'img/icon/play.svg' %}" alt=""/>
+                    </a>
+                </li>
+                <li class="btn__item">
+                    <a href="">
+                        <img src="{% static 'img/icon/like.svg' %}" alt=""/>
+                    </a>
+                </li>
+                <li class="btn__item">
+                    <a href="">
+                        <img src="{% static 'img/icon/dots.svg' %}" alt=""/>
+                    </a>
+                </li>
+            </ul>
+            <table class="table">
+                <tr class="table__row">
+                    <td>#</td>
+                    <td>Title</td>
+                    <td>Date added</td>
+                    <td><img src="{% static 'img/icon/duration.svg' %}" alt=""/></td>
+                </tr>
+
+                {% for favMusic in favMusics %}
+                <tr class="table__row">
+                    <td>{{forloop.counter}}</td>
+                    <td>
+                        <a href="" onclick="playCurrentMusic(
+                          '{{favMusic.music_id.audio_file.url}}',
+                          '{{favMusic.music_id.title}}',
+                          '{{favMusic.music_id.artist}}',
+                          '{{ favMusic.music_id.coverMusic.url }}'
+                  )">
+                            <img width="40px" src="{{ favMusic.music_id.coverMusic.url }}" alt=""/>
+                            {{favMusic.music_id.title}}
+                        </a>
+
+                    </td>
+                    <td>3 month ago</td>
+                    <td>{{favMusic.duration}}</td>
+                </tr>
+
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</section>
+<div class="player">
+    <div class="details">
+        <img src="" class="track-art"/>
+        <div class="track__info">
+            <p class="track-name">Track Name</p>
+            <p class="track-artist">Track Artist</p>
+        </div>
+    </div>
+
+    <div class="player__wrapper">
+        <div class="buttons">
+            <div style="color: white" class="prev-track" onclick="prevTrack()">
+
+                prev
+            </div>
+            <img class="playpause-track" onclick="playpauseTrack()" src="{% static  'img/icon/play_pleer.svg' %}"
+                 alt="">
+            <div style="color: white" class="next-track" onclick="nextTrack()">
+                next
+            </div>
+        </div>
+        <div class="slider_container">
+            <div class="current-time">00:00</div>
+            <input
+                    type="range"
+                    min="1"
+                    max="100"
+                    value="0"
+                    class="seek_slider"
+                    onchange="seekTo()"
+            />
+            <div class="total-duration">00:00</div>
+        </div>
+    </div>
+    <div class="slider_container">
+        <i class="fa fa-volume-down"></i>
+        <input
+                type="range"
+                min="1"
+                max="100"
+                value="99"
+                class="volume_slider"
+                onchange="setVolume()"
+        />
+        <i class="fa fa-volume-up"></i>
+    </div>
+</div>
+<script src="{% static 'scripts/music.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'style/profile_user.css' %}">
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="{%static 'img/icon/sdufy_for_black.svg' %}" width="110px" alt="" class="logo">
+            <div class="prof">
+                <img src="{% static 'img/icon/user_white.svg' %}" width="50px" height="50px" alt="">
+                <!-- <span style="color: aliceblue;">Профиль</span> -->
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" style="background-color: black; border:none;" type="button" data-toggle="dropdown">Профиль
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a href="">Аккаунт</a></li>
+                      <li><a href="{% url 'logout' %}">Выйти</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="leftBar">
+        <div class="container">
+        <div class="leftBar__wrapper">
+            <img src="{% static 'img/icon/avatar_user.svg' %}" class="leftBar_avatar" width="80px" alt=""/>
+            <div class="leftBar__items">
+                <a href="{% url 'profile' %}" class="account">
+                    <img src="{% static 'img/icon/profile_akkaunt.svg' %}" alt=""/>
+                    <span class="profileSec activeSec">Аккаунт</span>
+                </a>
+
+                <!-- <hr class="solid"> -->
+
+                <a href="{% url 'edit_profile' %}" class="edit_profile">
+                    <img src="{% static 'img/icon/profile_edit.svg' %}" alt=""/>
+                    <span class="profileSec">Изменения профиля</span></a>
+                <!-- <hr class="solid"> -->
+
+                <a href="{% url 'edit_password' %}" class="edit_password">
+                    <img src="{% static 'img/icon/profile_password.svg' %}" alt=""/>
+                    <span class="profileSec">Смена пароля</span></a>
+                <a href="{% url 'notifications' %}" class="notifications">
+                    <img src="{% static 'img/icon/notification.svg' %}" alt=""/>
+                    <span class="profileSec">Уведомления</span></a>
+                <!-- <hr class="solid"> -->
+
+            </div>
+        </div>
+        </div>
+    </section>
+    {% if temp == 0 %}
+    <section class="main">
+        <div class="container">
+            <div class="wrapper"></div>
+            <h1>Аккаунт</h1>
+            <div>
+                <h3>Профиль</h3>
+                <ul class="profile_desc">
+                    <li><strong>Имя пользователя:</strong>  {{user.name}}</li>
+                    <li><strong>Никнейм:</strong>  {{user.username}}</li>
+                </ul>
+                <div class="profile_wrapper">
+                    <div class="playlists">
+                        Плейлисты
+                        <p>5</p>
+                    </div>
+                    <div class="liked_songs">
+                        Понравившиеся треки
+                        <p>10</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    {% elif temp == 1 %}
+    <section class="main">
+        <div class="container">
+            <form action="/profile/edit/" method="post">
+                {% csrf_token %}
+                <label>Name</label>
+                <input type="text" name="name" value="{{user.name}}">
+                <label>Userame</label>
+                <input type="text" name="username" value="{{user.username}}">
+                <input type="submit">
+            </form>
+        </div>
+
+    </section>
+    {% elif temp == 2 %}
+    <section class="main">
+        <div class="container">
+            <form action="/profile/edit/password/" method="post">
+                {% csrf_token %}
+                <label>Old Password</label>
+                <input type="password" name="oldpass"><br>
+                <label>New Password</label>
+                <input type="password" name="newpass1"><br>
+                <label>Repeat New Password</label>
+                <input type="password" name="newpass2"><br>
+                <p class="text-danger">{{message}}</p>
+                <input type="submit">
+            </form>
+        </div>
+    </section>
+    {% else %}
+     <section class="main">
+        <div class="container">
+            <ul class="noti__list">
+                <li class="noti__item">
+                    item
+                </li>
+            </ul>
+        </div>
+     </section>
+    {% endif %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        let index = parseInt('{{ temp }}')
+        let profileSec = document.querySelectorAll('.profileSec')
+        for (let i = 0; i < profileSec.length; i++) {
+            profileSec[i].classList.remove('activeSec')
+        }
+        profileSec[index].classList.add('activeSec')
+    </script>
+    </body>
+</html>

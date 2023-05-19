@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html lang="en">
+{%load static%}
+<head>
+
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Spotify - Web Player: Music for everyone</title>
+    <link rel="stylesheet" href="{% static 'style/music.css' %}">
+    <link rel="stylesheet" href="{% static 'style/profile.css' %}">
+
+
+    <style>
+        table {
+            counter-reset: rowNumber;
+        }
+
+        table tr:not(:first-child) {
+            counter-increment: rowNumber;
+        }
+
+        .table__data::before {
+            content: counter(rowNumber);
+            min-width: 1em;
+            margin-right: 0.5em;
+        }
+
+
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <div class="header__wrapper">
+            <ul class="header__nav">
+                <li>
+                    <a href="" class="row">
+                        <img src="{% static 'img/icon/left.svg' %}" alt=""/>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="row"
+                    ><img src="{% static 'img/icon/right.svg' %}" alt=""
+                    /></a>
+                </li>
+            </ul>
+            <ul class="header__buttons">
+                <li>
+                    <a class="signUp" href="{% url 'signup' %}">Зарегистрироваться</a>
+                </li>
+                <li>
+                    <a class="signIn" href="{% url 'signin' %}">Войти</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+<section class="leftBar">
+    <div class="leftBar__wrapper">
+        <a href="">
+            <img src="{% static 'img/icon/logo.svg' %}" alt=""/>
+        </a>
+        <div class="leftBar__center">
+            <a href="">
+                <img src="{% static 'img/icon/home.svg' %}" alt=""/>
+                Главная
+            </a>
+            <a href="!#">
+                <img src="{% static 'img/icon/search.svg' %}" alt=""/>
+                Поиск</a
+            >
+            <a href="#~">
+                <img src="{% static 'img/icon/playlist.svg' %}" alt=""/>
+                Моя медиатека</a
+            >
+        </div>
+
+        <div class="leftBar__bottom">
+            <a href="">
+                <img src="{% static 'img/icon/plus.svg' %}" alt=""/>
+                Создать плейлист</a
+            >
+            <a href="{% url 'favourite' %}">
+                <img src="{% static 'img/icon/favourite.svg' %}" alt=""/>
+                Любимые треки</a
+            >
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container">
+        <div class="content__wrapper">
+            <div class="content__top">
+                <div class="content__top__left">
+                    <img src="{% static 'img/skin.png' %}" alt=""/>
+                </div>
+                <div class="content__top__right">
+                    <h4>Плейлист</h4>
+                    <h1 class="content__top__title">{{ playlistName }}</h1>
+                    <p class="content__top_timer">примерно 10ч.</p>
+                </div>
+            </div>
+            <ul class="btn__list">
+                <li class="btn__item">
+                    <!--                    TODO  -->
+
+                    <!--                    <a href="{% url 'playMusic' playlistName.id  %}">-->
+                    <img onclick="playpauseTrack()" class="playStop" src="{% static 'img/icon/pause.svg' %}" alt="">
+                </li>
+                <li class="btn__item">
+                    <a href="">
+                        <img src="{% static 'img/icon/like.svg' %}" alt=""/>
+                    </a>
+                </li>
+                <li class="btn__item">
+                    <a href="">
+                        <img src="{% static 'img/icon/dots.svg' %}" alt=""/>
+                    </a>
+                </li>
+            </ul>
+            <table class="table">
+                <tr class="table__row">
+                    <td>#</td>
+                    <td>Title</td>
+                    <td>Date added</td>
+                    <td><img src="{% static 'img/icon/duration.svg' %}" alt=""/></td>
+                </tr>
+                {% for music in musicList %}
+                {% for emusic in music %}
+                <tr class="table__row">
+
+
+                    <td class="table__data">
+                        <a onclick="playCurrentMusic(
+                            '{{ emusic.audio_file.url }}',
+                            '{{ emusic.title }}',
+                            '{{ emusic.artist }}',
+                            '{{ emusic.coverMusic.url }}'
+                        )" href="!#">
+                            <input class="pathMusic" type="hidden" value="{{ emusic.audio_file.url }}">
+                            <img class="coverMusic" width="40px" src="{{ emusic.coverMusic.url }}" alt=""/>
+                            <p style="display: inline-block" class="musicTitle">{{ emusic.title }}</p>
+                            <p style="display: inline-block" class="musicArtist">{{ emusic.artist }}</p>
+                        </a>
+                    </td>
+                    <td>3 month ago</td>
+                    <td>3:12</td>
+                </tr>
+                {% endfor %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+
+</section>
+
+
+<div class="player">
+    <div class="details">
+        <img src="" class="track-art"/>
+        <div class="track__info">
+            <p class="track-name">Track Name</p>
+            <p class="track-artist">Track Artist</p>
+        </div>
+    </div>
+
+    <div class="player__wrapper">
+        <div class="buttons">
+            <div style="color: white" class="prev-track" onclick="prevTrack()">
+
+                prev
+            </div>
+            <img class="playpause-track" onclick="playpauseTrack()" src="{% static  'img/icon/play_pleer.svg' %}"
+                 alt="">
+            <div style="color: white" class="next-track" onclick="nextTrack()">
+                next
+            </div>
+        </div>
+        <div class="slider_container">
+            <div class="current-time">00:00</div>
+            <input
+                    type="range"
+                    min="1"
+                    max="100"
+                    value="0"
+                    class="seek_slider"
+                    onchange="seekTo()"
+            />
+            <div class="total-duration">00:00</div>
+        </div>
+    </div>
+    <div class="slider_container">
+        <i class="fa fa-volume-down"></i>
+        <input
+                type="range"
+                min="1"
+                max="100"
+                value="99"
+                class="volume_slider"
+                onchange="setVolume()"
+        />
+        <i class="fa fa-volume-up"></i>
+    </div>
+</div>
+{% block extrascripts %}
+<script src="{% static 'scripts/music.js' %}"></script>
+{% endblock %}
+</body>
+</html>

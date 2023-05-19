@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'style/admin.css'%}">
+</head>
+<body>
+<nav class="top-navbar">
+  <ul>
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'musicPanel' %}">Music Page</a></li>
+    <li><a href="{% url 'userPanel' %}">User Page</a></li>
+  </ul>
+</nav>
+
+<div class="table-users">
+   <div class="header">Music</div>
+   <table cellspacing="0">
+      <tr>
+         <th>#</th>
+          <th>Title</th>
+         <th>Artist</th>
+         <th>Duration</th>
+         <th>Published</th>
+      </tr>
+
+      {% for music in musics %}
+      <tr>
+          <td>{{ music.pk }}</td>
+         <td>{{ music.title }}</td>
+         <td>{{ music.artist}}</td>
+          <td>{{ music.duration }}</td>
+         <td>{{ music.published }}</td>
+         <td><img src="{{music.coverMusic.url}}"></td>
+      </tr>
+      {% endfor %}
+   </table>
+
+    <br>
+    <hr>
+    <br>
+
+
+     <div class="header">User</div>
+    <table cellspacing="0">
+      <tr>
+         <th>#</th>
+          <th>Name</th>
+         <th>Username</th>
+         <th>Password</th>
+         <th>Type</th>
+         <th>AvatarImg</th>
+      </tr>
+
+      {% for user in users %}
+      <tr>
+          <td>{{ user.pk }}</td>
+         <td>{{ user.name }}</td>
+         <td>{{ user.username}}</td>
+         <td>{{ user.password }}</td>
+         <td>{{ user.type }}</td>
+         <td><img src="{{user.avatarImg.url}}"></td>
+      </tr>
+      {% endfor %}
+   </table>
+</div>
+</body>
+</html>

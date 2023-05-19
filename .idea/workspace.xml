@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="5e94b443-676a-44e8-b026-7b50cc0dd3d8" name="Changes" comment="img">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdufy/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/sdufy/db.sqlite3" afterDir="false" />
+    </list>
+=======
+    <list default="true" id="5e94b443-676a-44e8-b026-7b50cc0dd3d8" name="Changes" comment="img" />
+>>>>>>> acdad2032afb9d0b8a64619ede38c7f52acd16f3
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--follow-tags" />
+        <option name="title" value="Current Branch" />
+      </GitPushTagMode>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2PjCQVav54CLNdL9V2QogH4xneJ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+<<<<<<< HEAD
+    "last_opened_file_path": "C:/Users/Lenovo/Desktop/project-final/sdufy/sdufyStarter/static/style",
+=======
+    "last_opened_file_path": "C:/Users/Lenovo/Desktop/final-project",
+>>>>>>> acdad2032afb9d0b8a64619ede38c7f52acd16f3
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Lenovo\Desktop\project-final\sdufy\sdufyStarter\static\style" />
+      <recent name="C:\Users\Lenovo\Desktop\project-final\sdufy\sdufyStarter\templates\sdufy" />
+      <recent name="C:\Users\Lenovo\Desktop\project-final\sdufy\sdufyStarter\static" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5e94b443-676a-44e8-b026-7b50cc0dd3d8" name="Changes" comment="" />
+      <created>1683961087333</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683961087333</updated>
+<<<<<<< HEAD
+      <workItem from="1683961089203" duration="5656000" />
+=======
+      <workItem from="1683961089203" duration="4271000" />
+      <workItem from="1684003697129" duration="520000" />
+>>>>>>> acdad2032afb9d0b8a64619ede38c7f52acd16f3
+    </task>
+    <task id="LOCAL-00001" summary="img">
+      <created>1683962833333</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1683962833333</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="img" />
+    <option name="LAST_COMMIT_MESSAGE" value="img" />
+  </component>
+</project>

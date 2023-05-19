@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style/search.css' %}">
+</head>
+<body>
+<div class="sidebar">
+    <div class="logo">
+        <a href="{% url 'home' %}">
+            <img src="./img/spotify_logo.png" alt="">
+        </a>
+    </div>
+    <div class="block">
+        <ul>
+            <li>
+                <a href="{% url 'home' %}">
+                    <span class="fa fa-home"></span>
+                    <span>Main</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'search' %}">
+                    <span class="fa fa-search"></span>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'playlist' %}">
+                    <span class="fa fa-book"></span>
+                    <span>Your Library</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="block">
+        <ul>
+            <li>
+                <a href="{% url 'createPlaylist' %}">
+                    <span class="fa-solid fa-plus"></span>
+                    <span>Create Playlist</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'favourite' %}">
+                    <span class="fa-solid fa-heart"></span>
+                    <span>Liked Songs</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="main-container">
+    <div class="topbar">
+        <div class="prev-next-buttons">
+            <button type="submit" class="fa fas fa-chevron-left"></button>
+            <button type="submit" class="fa fas fa-chevron-right"></button>
+            <div class="form">
+                <span class="fa fa-search"></span>
+                <form method="get" action="">
+                    {% if search %}
+                    <input type="text" placeholder="What do you want to listen to?" name="search" value="{{search}}">
+                    {% else %}
+                    <input type="text" placeholder="What do you want to listen to?" name="search">
+                    {% endif %}
+                    <input type="checkbox" class="search-input" name="search-by-all">
+                    <input type="checkbox" class="search-input" name="search-by-singers">
+                    <input type="checkbox" class="search-input" name="search-by-playlists">
+                    <input type="checkbox" class="search-input" name="search-by-songs">
+                    <input type="checkbox" class="search-input" name="search-by-profiles">
+                    <input type="checkbox" class="search-input" name="search-by-albums">
+                    <input type="checkbox" class="search-input" name="search-by-genres">
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="search-by">
+        <ul>
+            <li>
+                <button class="check-button checked-button" onclick="checkInput(0)">All</button>
+            </li>
+            <li>
+                <button class="check-button" onclick="checkInput(1)">Singers</button>
+            </li>
+            <li>
+                <button class="check-button" onclick="checkInput(2)">Playlists</button>
+            </li>
+            <li>
+                <button class="check-button" onclick="checkInput(3)">Songs</button>
+            </li>
+            <li>
+                <button class="check-button" onclick="checkInput(4)">Profiles</button>
+            </li>
+            <li>
+                <button class="check-button" onclick="checkInput(5)">Albums</button>
+            </li>
+            <li>
+                <button class="check-button" onclick="checkInput(6)">Genres</button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h2 class="content-header">All</h2>
+        <div class="grid all-result">
+            <a href="" class="a-wrapper">
+                <div class="playlist-card">
+                    <span class="playlist-header">Events</span>
+                    <img src="https://concerts.spotifycdn.com/images/live-events_category-image.jpg" alt=""
+                         class="mini-cover">
+                </div>
+            </a>
+            <a href="" class="a-wrapper">
+                <div class="playlist-card">
+                    <span class="playlist-header">For you</span>
+                    <img src="https://concerts.spotifycdn.com/images/live-events_category-image.jpg" alt=""
+                         class="mini-cover">
+                </div>
+            </a>
+            <a href="" class="a-wrapper">
+                <div class="playlist-card">
+                    <span class="playlist-header">New Releases</span>
+                    <img src="https://concerts.spotifycdn.com/images/live-events_category-image.jpg" alt=""
+                         class="mini-cover">
+                </div>
+            </a>
+            <a href="" class="a-wrapper">
+                <div class="playlist-card">
+                    <h3 class="playlist-header">POp</h3>
+                    <img src="https://concerts.spotifycdn.com/images/live-events_category-image.jpg" alt=""
+                         class="mini-cover">
+                </div>
+            </a>
+            <a href="" class="a-wrapper">
+                <div class="playlist-card">
+                    <span class="playlist-header">Hip</span>
+                    <img src="https://concerts.spotifycdn.com/images/live-events_category-image.jpg" alt=""
+                         class="mini-cover">
+                </div>
+            </a>
+            <a href="" class="a-wrapper">
+                <div class="playlist-card">
+                    <span class="playlist-header">Mood</span>
+                    <img src="https://concerts.spotifycdn.com/images/live-events_category-image.jpg" alt=""
+                         class="mini-cover">
+                </div>
+            </a>
+            <a href="" class="a-wrapper">
+                <div class="playlist-card">
+                    <span class="playlist-header">Dance</span>
+                    <img src="https://concerts.spotifycdn.com/images/live-events_category-image.jpg" alt=""
+                         class="mini-cover">
+                </div>
+            </a>
+            <a href="" class="a-wrapper">
+                <div class="playlist-card">
+                    <span class="playlist-header">Charts</span>
+                    <img src="https://concerts.spotifycdn.com/images/live-events_category-image.jpg" alt=""
+                         class="mini-cover">
+                </div>
+            </a>
+            <a href="" class="a-wrapper">
+                <div class="playlist-card">
+                    <span class="playlist-header">Charts</span>
+                    <img src="https://concerts.spotifycdn.com/images/live-events_category-image.jpg" alt=""
+                         class="mini-cover">
+                </div>
+            </a>
+            <a href="" class="a-wrapper">
+                <div class="playlist-card">
+                    <span class="playlist-header">Charts</span>
+                    <img src="https://concerts.spotifycdn.com/images/live-events_category-image.jpg" alt=""
+                         class="mini-cover">
+                </div>
+            </a>
+            <a href="" class="a-wrapper">
+                <div class="playlist-card">
+                    <span class="playlist-header">Charts</span>
+                    <img src="https://concerts.spotifycdn.com/images/live-events_category-image.jpg" alt=""
+                         class="mini-cover">
+                </div>
+            </a>
+            <a href="" class="a-wrapper">
+                <div class="playlist-card">
+                    <span class="playlist-header">Charts</span>
+                    <img src="https://concerts.spotifycdn.com/images/live-events_category-image.jpg" alt=""
+                         class="mini-cover">
+                </div>
+            </a>
+            <a href="" class="a-wrapper">
+                <div class="playlist-card">
+                    <span class="playlist-header">Charts</span>
+                    <img src="https://concerts.spotifycdn.com/images/live-events_category-image.jpg" alt=""
+                         class="mini-cover">
+                </div>
+            </a>
+            <a href="" class="a-wrapper">
+                <div class="playlist-card">
+                    <span class="playlist-header">Charts</span>
+                    <img src="https://concerts.spotifycdn.com/images/live-events_category-image.jpg" alt=""
+                         class="mini-cover">
+                </div>
+            </a>
+        </div>
+
+        <div class="grid singers-result">
+            {% for singer in singers %}
+            <a href="" class="a-singer-wrapper">
+                <div class="singer-card">
+                    <img src="" alt="">
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <br>
+                    <h4 class="singer-header">The Score</h4>
+                    <p>Singer</p>
+                </div>
+            </a>
+            {% endfor %}
+            <a href="" class="a-singer-wrapper">
+                <div class="singer-card">
+                    <img src="https://i.scdn.co/image/ab67616d00001e02ce7ac253e5ed92f5815c295e" alt="">
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <br>
+                    <h4 class="singer-header">The Score</h4>
+                    <p>Singer</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="grid playlists-result">
+            {% for playlist in playlistUser %}
+            {% for eplaylist in playlist %}
+            <a href="{% url 'playlist2'  eplaylist.id %}" class="a-singer-wrapper">
+                <div class="singer-card">
+                    <img src="{{ eplaylist.coverPlaylist.url }}" alt="" class="playlist-cover">
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4 class="singer-header">{{eplaylist.title}}</h4>
+                    <p>{{eplaylist.artist}}</p>
+                </div>
+            </a>
+            {% endfor %}
+            {% endfor %}
+
+        </div>
+
+        <div class="grid songs-grid">
+            <div class="songs-header">
+                <span># Name</span>
+                <span>Album</span>
+                <span class="fa fa-clock"></span>
+            </div>
+            <br>
+            <div class="songs">
+                {% for music in musics %}
+                <div class="song">
+                    <div class="song-name">
+                        <span class="song-number">{{forLoop.counter}}</span>
+                        <img src="{{music.coverMusic.url}}" class="mini-song-cover" alt="">
+                        <div class="name">
+                            <a href=""><h4>{{music.title}}</h4></a>
+                            <a href=""><p>{{music.artist}}</p></a>
+                        </div>
+                    </div>
+                    <div class="album-name">
+                        <span>Metamorph</span>
+                    </div>
+                    <div class="duration-div">
+                        <form method="post">
+                            {% csrf_token %}
+                            <input name="favInput" type="text" id="favInput"
+                                   style="visibility: hidden; position: absolute;">
+                            <button type="submit" id="submitButton"
+                                    style="visibility: hidden; position: absolute;"></button>
+
+                            {% if music.pk in favMusics %}
+                            <span class="fa-solid fa-heart" style="color: #1ed760;"
+                                  onclick="submit({{music.pk}})"></span>
+                            {% else %}
+                            <span class="fa-regular fa-heart" onclick="submit({{music.pk}})"></span>
+                            {% endif %}
+                            <span onclick="submit({{music.pk}})">Add</span>
+                            <select name="choice" id="choice">
+                                {% for playlist in playlists %}
+                                <option value="{{playlist.id}}">{{playlist.title}}</option>
+                                {% endfor %}
+                            </select>
+                        </form>
+                        <span class="duration">{{music.duration}}</span>
+                        <span class="fa fa-ellipsis"></span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="grid profiles-result">
+            {% if profiles %}
+            {% for profile in profiles%}
+            <a href="" class="a-singer-wrapper">
+                <div class="singer-card">
+                    <img src="{{profile.avatarImg.url}}" alt="">
+                    <br>
+                    <br>
+                    <h4 class="singer-header">{{profile.username}}</h4>
+                    <p>Profile</p>
+                </div>
+            </a>
+            {% endfor %}
+            {% else %}
+            {% endif %}
+        </div>
+
+        <div class="grid albums-result">
+            <a href="" class="a-singer-wrapper">
+                <div class="singer-card">
+                    <img src="https://i.scdn.co/image/ab67616d00001e0212a76d1b13ef07188f7dfbc9" alt=""
+                         class="playlist-cover">
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4 class="singer-header">The Hightlights</h4>
+                    <p>2021 The Weeknd</p>
+                </div>
+            </a>
+            <a href="" class="a-singer-wrapper">
+                <div class="singer-card">
+                    <img src="	https://i.scdn.co/image/ab67616d00001e028863bc11d2aa12b54f5aeb36" alt=""
+                         class="playlist-cover">
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4 class="singer-header">After Hours</h4>
+                    <p>2021 The Weeknd</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="grid genres-result">
+            <a href="" class="a-singer-wrapper">
+                <div class="singer-card">
+                    <img src="https://cdn.shopify.com/s/files/1/0130/8714/6043/articles/image1_1_580x.jpg?v=1621417630"
+                         alt="" class="playlist-cover">
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4 class="singer-header">Rock'n'roll</h4>
+                </div>
+            </a>
+            <a href="" class="a-singer-wrapper">
+                <div class="singer-card">
+                    <img src="https://hortusrest.ru/content/uploads/2017/10/jazz.png" alt="" class="playlist-cover">
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4 class="singer-header">Jazz</h4>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<script>
+    function submit(id) {
+        document.getElementById('favInput').value = id;
+        document.getElementById('submitButton').click();
+    }
+
+    function checkInput(id) {
+        var buttons = document.getElementsByClassName('check-button');
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].classList.remove('checked-button');
+        }
+        buttons[id].classList.add('checked-button');
+        var content_header = document.getElementsByClassName('content-header')[0];
+        content_header.textContent = buttons[id].textContent;
+
+        var search_inputs = document.getElementsByClassName('search-input');
+        for (var i = 0; i < search_inputs.length; i++) {
+            search_inputs[i].checked = false;
+        }
+        search_inputs[id].checked = true;
+
+        var divs = document.getElementsByClassName('grid');
+        console.log(divs);
+        for (var i = 0; i < divs.length; i++) {
+            divs[i].style.display = 'none';
+        }
+        console.log(divs[id]);
+        divs[id].style.display = 'grid';
+    }
+</script>
+<script src="https://kit.fontawesome.com/7fb7fffe92.js" crossorigin="anonymous"></script>
+</body>
+</html>

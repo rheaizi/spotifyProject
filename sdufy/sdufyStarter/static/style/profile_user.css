@@ -1,0 +1,132 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  }
+.leftBar{
+    margin: 0 174.6px;
+}
+body{
+    background-color: #1e2939;
+}
+
+
+header{
+    background-color: #000;
+    position: relative;
+    z-index: 20;
+    top: 0;
+    width: 100%;
+    height: 80px;
+}
+header .container{
+    margin: 0 174.6px;
+    padding: 0 15px;
+    display: flex;
+}
+header .container .logo{
+    margin-top: 20px;
+}
+header .container .prof{
+    margin-top: 15px;
+    margin-left: 885px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header .container .prof img{
+    border-radius: 50%;
+    width: 40px;
+}
+header .container .prof div{
+    display: block;
+    margin-left: 10px;
+    color: #fff;
+}
+
+.leftBar {
+    position: relative;
+    z-index: 10;
+    top: 0;
+    width: 20%;
+    height: 100vh;
+    background-color: #1c1c1c;
+  }
+.leftBar_avatar{
+    display: inline-block;
+    border-radius: 50%;
+    width: 80px;
+    margin: 10px 0 0 100px;
+}
+.leftBar__items{
+    padding-left: 50px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* align-items: center; */
+}
+.leftBar__items a img{
+    width: 20px;
+    height: 20px;
+    color:#fff;
+    margin-right: 20px;
+    /* margin-right: 20px; */
+}
+.leftBar__items a hr{
+    position: absolute;;
+}
+.leftBar__items a{
+    margin-bottom: 30px;
+    color: #fff;
+}
+.main{
+    /* display: none; */
+    /* top: 80px; */
+    background-color: #fff;
+    width: 58%;
+    height: 100%;
+    margin: 0 482px;
+    position: absolute;
+    top: 80px;
+    z-index: 10;
+    padding: 28px;
+
+}
+.main .container div{
+    color: #000;
+}
+
+.profile_desc{
+    margin-top: 20px;
+}
+
+.profile_desc li{
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+.profile_wrapper{
+    display: flex;
+    margin-top: 20px;
+}
+.profile_wrapper .playlists{
+    margin-right: 30px;
+}
+.profile_wrapper .playlists p, .profile_wrapper .liked_songs p{
+    text-align: center;
+}
+
+.dropdown{
+    position: relative;
+    z-index: 20;
+}
+.activeSec {
+    color: #1db954;
+
+}
+.account:focus, .edit_profile:focus, .edit_password:focus, .notifications:focus{
+    color: #1db954;
+    text-decoration: none;
+}
